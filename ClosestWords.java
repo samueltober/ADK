@@ -14,14 +14,17 @@ public class ClosestWords {
       return w2len;
     if (w2len == 0)
       return w1len;
-    int res = partDist(w1, w2, w1len - 1, w2len - 1) + 
-	(w1.charAt(w1len - 1) == w2.charAt(w2len - 1) ? 0 : 1);
+    
+    int res = partDist(w1, w2, w1len - 1, w2len - 1) + (w1.charAt(w1len - 1) == w2.charAt(w2len - 1) ? 0 : 1);
+    
     int addLetter = partDist(w1, w2, w1len - 1, w2len) + 1;
     if (addLetter < res)
       res = addLetter;
+    
     int deleteLetter = partDist(w1, w2, w1len, w2len - 1) + 1;
     if (deleteLetter < res)
-      res = deleteLetter;
+      res = deleteLetter;   
+    
     return res;
   }
 
